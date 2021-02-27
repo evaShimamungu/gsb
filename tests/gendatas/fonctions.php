@@ -390,7 +390,7 @@ function ajoutTypeVisiteur($pdo)
     $req = 'select * from visiteur';
     $res = $pdo->query($req);
     $lesLignes = $res->fetchAll();
-    $typesPossibles = array( medical, comptable);
+    $typesPossibles = array( 'medical', 'comptable');
     foreach ($lesLignes as $unVisiteur) {
         $i = rand(0,1);
         $type = $typesPossibles[$i];
