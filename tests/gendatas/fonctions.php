@@ -378,3 +378,24 @@ function majFicheFrais($pdo)
         $pdo->exec($req);
     }
 }
+
+/**
+ * Fonction ajoutant le type de visiteur
+ * @param mixed $pdo instance de la classe pdo pour se connecter
+ * 
+ * @return null
+ */
+function ajoutTypeVisiteur($pdo)
+{
+    $req = 'select * from visiteur';
+    $res = $pdo->query($req);
+    $lesLignes = $res->fetchAll();
+    $typesPossibles = array( medical, comptable);
+    foreach ($lesLignes as $unVisiteur) {
+        $i = rand(0,1);
+        $type = $typesPossibles[$i];
+        $id = $unVisiteur['id'];
+        $req = "update visiteur set typevisiteur ='$type' where visiteur.id ='$id' ";
+        $pdo->exec($req);
+    }
+}
