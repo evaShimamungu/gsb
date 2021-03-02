@@ -31,12 +31,13 @@ case 'valideConnexion':
         ajouterErreur('Login ou mot de passe incorrect');
         include 'vues/v_erreurs.php';
         include 'vues/v_connexion.php';
+
     } else {
         $id = $visiteur['id'];
         $nom = $visiteur['nom'];
         $prenom = $visiteur['prenom'];
-        $typevisiteur=$visiteur['typevisiteur'];
-        connecter($id, $nom, $prenom);
+        $typevisiteur = $visiteur['typevisiteur'];
+        connecter($id, $nom, $prenom, $typevisiteur);
         header('Location: index.php');
     }
     break;

@@ -31,13 +31,16 @@ function estConnecte()
  * @param String $nom        Nom du visiteur
  * @param String $prenom     Prénom du visiteur
  *
+ *
  * @return null
  */
-function connecter($idVisiteur, $nom, $prenom)
+function connecter($idVisiteur, $nom, $prenom, $typevisiteur)
 {
     $_SESSION['idVisiteur'] = $idVisiteur;
     $_SESSION['nom'] = $nom;
     $_SESSION['prenom'] = $prenom;
+    $_SESSION['typevisiteur'] =$typevisiteur;
+ 
 }
 
 /**

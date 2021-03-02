@@ -93,16 +93,23 @@ class PdoGsb
     public function getInfosVisiteur($login, $mdp)
     {
         $requetePrepare = PdoGsb::$monPdo->prepare(
-            'SELECT visiteur.id AS id, visiteur.typevisiteur AS typevisiteur visiteur.nom AS nom, '
-            . 'visiteur.prenom AS prenom '
-            . 'FROM visiteur '
-            . 'WHERE visiteur.login = :unLogin AND visiteur.mdp = :unMdp'
+            'SELECT visiteur.id AS id, visiteur.nom AS nom, visiteur.prenom AS prenom, 
+            visiteur.typevisiteur AS typevisiteur
+            FROM visiteur 
+            WHERE visiteur.login = :unLogin AND visiteur.mdp = :unMdp'
         );
         $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unMdp', $mdp, PDO::PARAM_STR);
         $requetePrepare->execute();
+        echo 'console.log("coucou")';
         return $requetePrepare->fetch();
+        
+        
     }
+
+   
+
+
 
     /**
      * Retourne sous forme d'un tableau associatif toutes les lignes de frais
@@ -486,4 +493,6 @@ class PdoGsb
         $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
         $requetePrepare->execute();
     }
+    
 }
+
