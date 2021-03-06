@@ -18,7 +18,10 @@
 
 <div id="accueil">
     <h2>
+
         Gestion des frais<small> - Visiteur <?php echo $_SESSION['typevisiteur']?> :
+
+
             <?php 
             
             echo $_SESSION['prenom'] . ' ' . $_SESSION['nom']
@@ -37,7 +40,19 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
-                        <a href="index.php?uc=gererFrais&action=saisirFrais"
+                    <?php
+                    if ($_SESSION['typevisiteur'] == 'comptable'){?>
+                       <a href="index.php?uc=gererFrais&action=saisirFrais"
+                           class="btn btn-success btn-lg" role="button">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <br>Valider une fiche de frais</a>
+                        <a href="index.php?uc=etatFrais&action=selectionnerMois"
+                           class="btn btn-primary btn-lg" role="button">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                            <br>Suivre l'état des fiches de frais</a>
+                  <?php  } elseif ($_SESSION['typevisiteur']=='medical'){?>
+
+                             <a href="index.php?uc=gererFrais&action=saisirFrais"
                            class="btn btn-success btn-lg" role="button">
                             <span class="glyphicon glyphicon-pencil"></span>
                             <br>Renseigner la fiche de frais</a>
@@ -45,6 +60,8 @@
                            class="btn btn-primary btn-lg" role="button">
                             <span class="glyphicon glyphicon-list-alt"></span>
                             <br>Afficher mes fiches de frais</a>
+                           <?php }
+                        ?>
                     </div>
                 </div>
             </div>

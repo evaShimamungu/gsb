@@ -1,11 +1,20 @@
-<?php require './fonctions.php';
+<?php 
+
+function getLesVisiteur ($pdo){
+    $req = 'select nom, prenom, typevisiteur from visiteur where visiteur.typevisiteur = "medical"';
+    $res = $pdo->query($req);
+    $lesLignes = $res->fetchAll();
+    echo'on est là';
+    return $lesLignes;
+    }
 
 $pdo = new PDO('mysql:host=localhost;dbname=gsb_frais', 'root', '');
 
-$id="e24";
 
-$sql = 'SELECT typevisiteur FROM visiteur WHERE visiteur.id='.$id;
-print ($pdo->query($sql)); 
+$myArray =    getLesVisiteur ($pdo);
+print_r($myArray);
+echo gettype($myArray);
+
  
 
 

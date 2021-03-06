@@ -19,6 +19,8 @@ $mois = getMois(date('d/m/Y'));
 $numAnnee = substr($mois, 0, 4);
 $numMois = substr($mois, 4, 2);
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
+
+if ($_SESSION['typevisiteur'] == 'medical'){
 switch ($action) {
 case 'saisirFrais':
     if ($pdo->estPremierFraisMois($idVisiteur, $mois)) {
@@ -55,6 +57,9 @@ case 'supprimerFrais':
     $idFrais = filter_input(INPUT_GET, 'idFrais', FILTER_SANITIZE_STRING);
     $pdo->supprimerFraisHorsForfait($idFrais);
     break;
+}
+} elseif ($_SESSION['tpevisiteur']=='comptable'){
+
 }
 $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $mois);
 $lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $mois);

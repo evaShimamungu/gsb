@@ -398,4 +398,14 @@ function ajoutTypeVisiteur($pdo)
         $req = "update visiteur set typevisiteur ='$type' where visiteur.id ='$id' ";
         $pdo->exec($req);
     }
+
+    function getLesVisiteur ($pdo){
+    $req = 'select nom, prenom, typevisiteur from visiteur where visiteur.typevisiteur = "medical"';
+    $res = $pdo->query($req);
+    $lesLignes = $res->fetchAll();
+    echo'on est là';
+    return $lesLignes;
+    }
+
+
 }

@@ -494,5 +494,15 @@ class PdoGsb
         $requetePrepare->execute();
     }
     
+
+
+    function getLesVisiteurs (){
+        $pdo = new PDO('mysql:host=localhost;dbname=gsb_frais', 'root', '');
+        $req = 'select id, nom, prenom from visiteur where visiteur.typevisiteur = "medical"';
+        $res = $pdo->query($req);
+        $lesLignes = $res->fetchAll();  
+        return $lesLignes;
+        }
+    
 }
 
